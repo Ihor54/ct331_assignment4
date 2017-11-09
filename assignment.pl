@@ -5,12 +5,15 @@ isElementInList(El, [_|T]):-
   isElementInList(El, T).
 
 %Definitions for reverseList(List, ReversedList)
-%reverseList(List, ReversedList):-
-%  helperReverseList(List, ReversedList, []).
-%helperReverseList([], AdditionalList, AdditionalList).
-%helperReverseList([H|T], ReversedList, AdditionalList):-
-%  helperReverseList(T, ReversedList, [H|AdditionalList]).
 
+% 1 solution
+reverseList1(List, ReversedList):-
+  helperReverseList(List, ReversedList, []).
+helperReverseList([], AdditionalList, AdditionalList).
+helperReverseList([H|T], ReversedList, AdditionalList):-
+  helperReverseList(T, ReversedList, [H|AdditionalList]).
+
+% 2 solution
 reverseList([], []).
 reverseList([H|T], ReversedList):-
   reverseList(T, List),
@@ -21,6 +24,7 @@ insertElementIntoListEnd(El, [], [El]).
 insertElementIntoListEnd(El, [H|T], NewList):-
   insertElementIntoListEnd(El, T, List),
   NewList = [H|List].
+
 %Definitions for mergeLists(List1, List2, Merged)
 mergeLists([], List2, List2).
 mergeLists([H|T], List2, Merged):-
